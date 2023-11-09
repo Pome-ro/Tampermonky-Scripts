@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Zendesk Auto-Reload
 // @namespace    http://pome.ro/
-// @version      23.11.08
-// @description  provides a button to auto reload the zendesk view. 
+// @version      23.11.09
+// @description  provides a button to auto reload the zendesk view.
 // @author       @pomero
-// @match        *://*.zendesk.com/agent/filters/*
+// @match        *.zendesk.com/agent/filters/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=zendesk.com
 // @grant        none
 // @require      https://code.jquery.com/jquery-3.6.4.min.js
