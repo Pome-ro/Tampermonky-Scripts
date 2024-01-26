@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Lemmy Kitchen Sink
 // @namespace    http://tampermonkey.net/
-// @version      2024-01-26
+// @version      24.01.26.355
 // @description  try to take over the world!
 // @author       You
 // @match        *://*/*
@@ -54,7 +54,7 @@
         console.log("Lemmy Site Detected!")
         let url = document.location.href;
         window.onload = () => {
-            //addDomainsToDisplayNames()
+            addDomainsToDisplayNames()
             const body = document.querySelector("body");
             const observer = new MutationObserver((_) => {
                 if(url !== document.location.href){
