@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Lemmy Kitchen Sink
-// @namespace    http://tampermonkey.net/
-// @version      24.01.29.959
+// @namespace    http://pome.ro/
+// @version      24.01.29.1001
 // @description  try to take over the world!
 // @author       You
 // @match        *://*/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=lemmygrad.ml
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=lemmy.ml
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
