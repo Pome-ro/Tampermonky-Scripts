@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Lemmy Kitchen Sink
 // @namespace    http://tampermonkey.net/
-// @version      24.01.29.919
+// @version      24.01.29.929
 // @description  try to take over the world!
 // @author       You
 // @match        *://*/*
@@ -14,6 +14,7 @@
     'use strict';
     // States
     var moddingDom = false
+    var timeSinceLastMod
     
     
     // FUNCTIONS
@@ -34,19 +35,19 @@
     function addDomainsToDisplayNames(){
         moddingDom = true
         let personListings = document.getElementsByClassName('person-listing')
-        console.log("Adding Domains to Display Names")
-        console.log(personListings.length)
+        //console.log("Adding Domains to Display Names")
+        //console.log(personListings.length)
         for(let i = 0;i < personListings.length;i++){
             let poster = personListings[i];
-            console.log("working...")
-            console.log(poster)
+            //console.log("working...")
+            //console.log(poster)
             if (poster.title === poster.text) {
             } else {
                 let domain = extractDomain(poster.title);
                 let domainBadge = document.createElement("span")
                 domainBadge.innerHTML = domain
                 domainBadge.classList.add("domainTag")
-                console.log(domain)
+                //console.log(domain)
                 insertAfter(poster,domainBadge)
             }
         }
