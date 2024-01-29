@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Lemmy Kitchen Sink
 // @namespace    http://pome.ro/
-// @version      24.01.29.1001
+// @version      24.01.29.1002
 // @description  try to take over the world!
 // @author       You
 // @match        *://*/*
@@ -29,7 +29,6 @@
         referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     }
     function addDomainsToDisplayNames(){
-        moddingDom = true
         let personListings = document.getElementsByClassName('person-listing')
         //console.log("Adding Domains to Display Names")
         //console.log(personListings.length)
@@ -47,7 +46,6 @@
                 insertAfter(poster,domainBadge)
             }
         }
-        moddingDom = false
     }
 
     // THE SCRIPT
