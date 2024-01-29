@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Lemmy Kitchen Sink
 // @namespace    http://pome.ro/
-// @version      24.01.29.1003
+// @version      24.01.29.1015
 // @description  try to take over the world!
 // @author       You
 // @match        *://*/*
@@ -40,8 +40,8 @@
             } else {
                 let domain = extractDomain(poster.title);
                 let domainBadge = document.createElement("span")
-                domainBadge.innerHTML = `<span class="badge text-success border border-success">${domain}</span>`
-                domainBadge.classList.add("col")
+                domainBadge.innerHTML = `@${domain}`
+                domainBadge.classList.add("mx-1","badge","text-info","text-bg-light")
                 //console.log(domain)
                 insertAfter(poster,domainBadge)
             }
