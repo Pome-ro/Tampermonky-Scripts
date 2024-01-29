@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Lemmy Kitchen Sink
 // @namespace    http://tampermonkey.net/
-// @version      24.01.26.355
+// @version      24.01.29.919
 // @description  try to take over the world!
 // @author       You
 // @match        *://*/*
@@ -12,6 +12,10 @@
 
 (function() {
     'use strict';
+    // States
+    var moddingDom = false
+    
+    
     // FUNCTIONS
     function isLemmySite() {
         const meta = document.querySelector('meta[name="Description"]');
@@ -28,6 +32,7 @@
         referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     }
     function addDomainsToDisplayNames(){
+        moddingDom = true
         let personListings = document.getElementsByClassName('person-listing')
         console.log("Adding Domains to Display Names")
         console.log(personListings.length)
@@ -45,6 +50,7 @@
                 insertAfter(poster,domainBadge)
             }
         }
+        moddingDom = false
     }
     // THE SCRIPT
     if(!isLemmySite()){
@@ -59,11 +65,13 @@
             const observer = new MutationObserver((_) => {
                 if(url !== document.location.href){
                     url = document.location.href;
-                    var domainsTimer = setTimeout(()=>{
-                        //addDomainsToDisplayNames()
-                    },5000)
+                    
                 };
-                console.log(document.getElementsByClassName("main-content-wrapper")[0].children)
+                if(!moddingDom){
+                    var domainsTimer = setTimeout(()=>{
+                        addDomainsToDisplayNames()
+                    },5000)
+                }
             });
             observer.observe(body,{childList:true,subtree:true});
         };
