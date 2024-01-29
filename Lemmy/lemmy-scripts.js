@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Lemmy Kitchen Sink
 // @namespace    http://tampermonkey.net/
-// @version      24.01.29.931
+// @version      24.01.29.959
 // @description  try to take over the world!
 // @author       You
 // @match        *://*/*
@@ -12,11 +12,7 @@
 
 (function() {
     'use strict';
-    // States
-    var moddingDom = false
-    var timeSinceLastMod
-    
-    
+    // CONSTENTS
     // FUNCTIONS
     function isLemmySite() {
         const meta = document.querySelector('meta[name="Description"]');
@@ -45,17 +41,17 @@
             } else {
                 let domain = extractDomain(poster.title);
                 let domainBadge = document.createElement("span")
-                domainBadge.innerHTML = domain
-                domainBadge.classList.add("domainTag")
+                domainBadge.innerHTML = `<span class="badge text-success border border-success">${extractDomain}</span>`
+                domainBadge.classList.add("col")
                 //console.log(domain)
                 insertAfter(poster,domainBadge)
             }
         }
         moddingDom = false
     }
+
     // THE SCRIPT
     if(!isLemmySite()){
-        console.log("not a lemmy site")
         return
     } else {
         console.log("Lemmy Site Detected!")
@@ -66,11 +62,10 @@
             const observer = new MutationObserver((_) => {
                 if(url !== document.location.href){
                     url = document.location.href;
-                    if(!moddingDom){
-                        var domainsTimer = setTimeout(()=>{
-                            addDomainsToDisplayNames()
-                        },5000)
-                    }
+                    var domainsTimer = setTimeout(()=>{
+                        console.log("addDomainsToDisplayNames()")
+                        addDomainsToDisplayNames()
+                    },5000)
                 };
             });
             observer.observe(body,{childList:true,subtree:true});
