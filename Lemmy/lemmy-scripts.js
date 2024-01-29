@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Lemmy Kitchen Sink
 // @namespace    http://tampermonkey.net/
-// @version      24.01.29.929
+// @version      24.01.29.931
 // @description  try to take over the world!
 // @author       You
 // @match        *://*/*
@@ -66,13 +66,12 @@
             const observer = new MutationObserver((_) => {
                 if(url !== document.location.href){
                     url = document.location.href;
-                    
+                    if(!moddingDom){
+                        var domainsTimer = setTimeout(()=>{
+                            addDomainsToDisplayNames()
+                        },5000)
+                    }
                 };
-                if(!moddingDom){
-                    var domainsTimer = setTimeout(()=>{
-                        addDomainsToDisplayNames()
-                    },5000)
-                }
             });
             observer.observe(body,{childList:true,subtree:true});
         };
