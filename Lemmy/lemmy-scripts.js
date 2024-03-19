@@ -39,11 +39,13 @@
             if (poster.title === poster.text) {
             } else {
                 let domain = extractDomain(poster.title);
-                let domainBadge = document.createElement("span")
-                domainBadge.innerHTML = `@${domain}`
-                domainBadge.classList.add("mx-1","badge","text-info","text-bg-light")
-                //console.log(domain)
-                insertAfter(poster,domainBadge)
+                if(!domain === null){
+                    let domainBadge = document.createElement("span")
+                    domainBadge.innerHTML = `@${domain}`
+                    domainBadge.classList.add("mx-1","badge","text-info","text-bg-light")
+                    //console.log(domain)
+                    insertAfter(poster,domainBadge)
+                }
             }
         }
     }
